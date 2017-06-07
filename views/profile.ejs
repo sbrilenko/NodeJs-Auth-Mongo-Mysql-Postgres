@@ -1,0 +1,83 @@
+<% include partials/head %>
+
+  <body>
+    <div class="col-sm-8 col-sm-offset-2">
+      <div class="text-center">
+        <h1 class=" fa fa-user"> Profile</h1><br>
+        <% if(db == "mongo") { %>
+            <span><strong>user id</strong>: <%= user._id ? user._id : '' %></span><br>
+            <span class="fa fa-sign-out"><a href="/"> Sign out</a></span>
+            <hr>
+            <div class="jumbotron">
+              <% if (user.local != null && user.local.email!=null) { %>
+                <img src="https://avatars.io/gravatar/<%= user.local.email %>/140" class="img-circle"><br>
+                <strong>email</strong>: <%= user.local.email %><br>
+              <% } %>
+
+              <% if (user.facebook != null && user.facebook.id != null) { %>
+                <h2 class="fa fa-facebook"> Facebook</h2><br>
+                <img src="https://avatars.io/gravatar/<%= user.facebook.email %>/140" class="img-circle"><br>
+                <strong>id</strong>: <%= user.facebook.id %><br>
+                <strong>email</strong>: <%= user.facebook.email %><br>
+                <strong>name</strong>: <%= user.facebook.name %>
+              <% } %>
+
+              <% if (user.twitter != null && user.twitter.id != null) { %>
+                <h2 class="fa fa-twitter"> Twitter</h2><br>
+                <img src="https://avatars.io/twitter/<%= user.twitter.username %>" class="img-circle"><br>
+                <strong>id</strong>: <%= user.twitter.id %><br>
+                <strong>token</strong>: <%= user.twitter.token %><br>
+                <strong>username</strong>: <%= user.twitter.username %><br>
+                <strong>displayName</strong>: <%= user.twitter.displayName %>
+              <% } %>
+
+              <% if (user.google != null && user.google.id != null) { %>
+                <h2 class="fa fa-google-plus"> Google</h2><br>
+                <img src="https://avatars.io/gravatar/<%= user.google.email %>/140" class="img-circle"><br>
+                <strong>id</strong>: <%= user.google.id %><br>
+                <strong>token</strong>: <%= user.google.token %><br>
+                <strong>email</strong>: <%= user.google.email %><br>
+                <strong>name</strong>: <%= user.google.name %>
+              <% } %>
+            </div>
+        <% } else { %>
+            <span><strong>user id</strong>: <%= user.id ? user.id : '' %></span><br>
+            <span class="fa fa-sign-out"><a href="/"> Sign out</a></span>
+            <hr>
+            <div class="jumbotron">
+              <% if (user.localemail!=null) { %>
+                <img src="https://avatars.io/gravatar/<%= user.localemail %>/140" class="img-circle"><br>
+                <strong>email</strong>: <%= user.localemail %><br>
+              <% } %>
+
+              <% if (user.facebookid != null) { %>
+                <h2 class="fa fa-facebook"> Facebook</h2><br>
+                <img src="https://avatars.io/gravatar/<%= user.facebookemail %>/140" class="img-circle"><br>
+                <strong>id</strong>: <%= user.facebookid %><br>
+                <strong>email</strong>: <%= user.facebookemail %><br>
+                <strong>name</strong>: <%= user.facebookname %>
+              <% } %>
+
+              <% if (user.twitterid != null) { %>
+                <h2 class="fa fa-twitter"> Twitter</h2><br>
+                <img src="https://avatars.io/twitter/<%= user.twitterusername %>" class="img-circle"><br>
+                <strong>id</strong>: <%= user.twitterid %><br>
+                <strong>token</strong>: <%= user.twittertoken %><br>
+                <strong>username</strong>: <%= user.twitterusername %><br>
+                <strong>displayName</strong>: <%= user.twitterdisplayName %>
+              <% } %>
+
+              <% if (user.googleid != null) { %>
+                <h2 class="fa fa-google-plus"> Google</h2><br>
+                <img src="https://avatars.io/gravatar/<%= user.googleemail %>/140" class="img-circle"><br>
+                <strong>id</strong>: <%= user.googleid %><br>
+                <strong>token</strong>: <%= user.googletoken %><br>
+                <strong>email</strong>: <%= user.googleemail %><br>
+                <strong>name</strong>: <%= user.googlename %>
+              <% } %>
+            </div>
+        <% }  %>
+      </div>
+    </div>
+  </body>
+</html>
